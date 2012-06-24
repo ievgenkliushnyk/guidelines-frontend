@@ -328,7 +328,7 @@ CSS-классы модификатора элемента:
 
 ## Использование LESS
 
-LESS(http://lesscss.org/) лучше использовать в одном из серверных вариантов ([lessphp](http://leafo.net/lessphp/), [dotless](http://www.dotlesscss.org/) и т.п.).
+CSS-препроцессоры позволяют сократить запись в случае использования БЭМ. [LESS](http://lesscss.org/) лучше использовать в одном из серверных вариантов ([lessphp](http://leafo.net/lessphp/), [dotless](http://www.dotlesscss.org/) и т.п.).
 
 В простейшем случае можно использовать вложенность так:
 
@@ -352,12 +352,13 @@ LESS(http://lesscss.org/) лучше использовать в одном из
 ```scss
 /*
 	Работу фрагмента можно проверить тут: http://leafo.net/lessphp/editor.html
-*
+*/
 
 // Блок с модификаторами
 category-menu // Имя блока
 {
-	.b-& // Блок и его элементы
+	// Блок и его элементы
+	.b-& 
 		{
 		
 		// Стили для блока
@@ -368,12 +369,14 @@ category-menu // Имя блока
 			{
 			color: yellow;
 
-			&:hover // Псевдокласы для элемента
+			// Псевдокласы для элемента
+			&:hover 
 				{
 				color: green;
 				}
 
-			&-title // Элемент со сложным именем: .b-category-menu__item-title
+			// Элемент со сложным именем: .b-category-menu__item-title
+			&-title 
 				{
 				font-weight:bold;
 				}
