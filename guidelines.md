@@ -30,13 +30,13 @@
 
 Пример:
 	
-	```html
-	<div class="b-news">
-		<div class="b-news__latest">
-			...
-		</div><!-- /.b-news__latest -->
-	</div><!-- /.b-news-->
-	```
+```html
+<div class="b-news">
+	<div class="b-news__latest">
+		...
+	</div><!-- /.b-news__latest -->
+</div><!-- /.b-news-->
+```
 	
 ### Содержимое
 - HTML-код должен проходить валидацию по выбранному `DOCTYPE` (в последнее время чаще всего это HTML5)
