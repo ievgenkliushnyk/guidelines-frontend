@@ -350,56 +350,74 @@ LESS(http://lesscss.org/) лучше использовать в одном из
 Для блока с модификаторами можно сократить запись:
 
 ```scss
-// Работу фрагмента можно проверить тут: http://leafo.net/lessphp/editor.html
+/*
+	Работу фрагмента можно проверить тут: http://leafo.net/lessphp/editor.html
+*
 
 // Блок с модификаторами
 category-menu // Имя блока
 {
- .b-& // Блок и элементы
- {
-     // Стили для блока
-     color: red;
- 
-     // Стили для элементов блока
-     &__item
-     {
-       color: yellow;
-      
-       &:hover // Псевдокласы для элемента
-       {
-       color: green;
-       }
-       
-       &-title // Элемент со сложным именем: .b-category-menu__item-title
-       {
-       font-weight:bold;
-       }
-     }
- }
-  
-  // Стили для модификаторов
-  .m-&
-  {
-  
-   // Модификатор блока
-   &_size_small
-   {
-    font-size: 50%;
+	.b-& // Блок и его элементы
+		{
+		
+		// Стили для блока
+		color: red;
 
-     // Стили для элемента, которые содержатся в модифицируемом
-     // блоке. Так и не придумали как не повторять в этом случае .b-category-menu
-     .b-category-menu__item {
-       color: yellow;
-     }
-   }
+		// Стили для элементов блока
+		&__item
+			{
+			color: yellow;
+
+			&:hover // Псевдокласы для элемента
+				{
+				color: green;
+				}
+
+			&-title // Элемент со сложным именем: .b-category-menu__item-title
+				{
+				font-weight:bold;
+				}
+			}
+		}
+
+	// Стили для модификаторов блока и элементов
+	.m-&
+		{
+
+		// Модификатор блока
+		&_size_small
+			{
+			
+			// Стили для блока
+			font-size: 50%;
+
+			// Стили для элемента, которые содержатся в модифицируемом
+			// блоке. Так и не придумали как не повторять в этом случае .b-category-menu
+			.b-category-menu__item 
+				{
+				color: yellow;
+				}
+			}
    
-   // Модификатор элемента
-   &__item_size_small
-   {
-    font-size: 50%;
-   }
- }
+		// Модификатор элемента
+		&__item_size_small
+			{
+			font-size: 50%;
+			}
+		}
 }
+```
+
+Результат LESS-кода выше будет таким:
+
+```css
+.b-category-menu { color:red; }
+.b-category-menu__item { color:yellow; }
+.b-category-menu__item:hover { color:green; }
+.b-category-menu__item-title { font-weight:bold; }
+.m-category-menu_size_small { font-size:50%; }
+.m-category-menu_size_small .b-category-menu__item { color:yellow; }
+.m-category-menu__item_size_small { font-size:50%; }
 ```
 
 #### Преимущества подхода
