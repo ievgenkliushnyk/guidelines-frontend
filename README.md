@@ -371,7 +371,7 @@ CSS-классы модификатора элемента:
 	- `color`
 	- `font`, `text-decoration`
 	- `list-style`
-    - `white-space`	
+	- `white-space`
 	- остальные свойства...
 - Следующие свойства должны использоваться только в сокращённом виде: `margin`, `padding`, `border`, `background`, `list-style`, кроме случаев, если нужно переопределить только одно из значений. 
 - Следующие свойства желательно указывать в сокращённом виде, если это возможно: `font`.
@@ -382,12 +382,11 @@ CSS-классы модификатора элемента:
 ### Сторонние CSS-файлы
 В случае подключения сторонних библиотек часто необходимо внести модификации в некоторые из CSS-правил. В этом случае вместо модификации исходного файла необходимо переопределять нужные правила в отдельном. К примеру, для [Fancybox](http://fancybox.net/) файлы могут быть названы так: 
 
-	%%plain
-	jquery.fancybox-1.3.1.css` -- оригинальный немодифицированный файл
-	jquery.fancybox.override.css` -- переопределение нужных правил
+	- `jquery.fancybox-1.3.1.css`&nbsp;&mdash; оригинальный немодифицированный файл
+	- `jquery.fancybox.override.css`&nbsp;&mdash; переопределение нужных правил
 
-Такой подход упростит обновление сторонних компонентов.	Аналогично можно реализовывать темы оформления. Часто такой подход используется, чтобы перенести графику, необходимую для стороннего плагина в нужную папку.
-	
+Такой подход упростит обновление сторонних компонентов. Аналогично можно реализовывать темы оформления. Часто такой подход используется, чтобы перенести графику, необходимую для стороннего плагина в нужную папку.
+
 ### Поддержка IE6 (кому-то ещё нужно? :))
 - В случае необходимости поддержки IE6 отдельный CSS-файл может использоваться в следующих целях:
 	- Замены картинок PNG24 на упрощённые аналоги
@@ -401,7 +400,7 @@ CSS-классы модификатора элемента:
 	- Закруглённые углы.
 	- Тени и glow (как для блоков так и для текста, может быть реализован в IE с помощью фильтров).
 - Можно использовать условные комментарии для выставления классов для `body` (например, как в [HTML5 boilerplate](http://html5boilerplate.com/html5boilerplate-site/built/en_US/docs/html/#ie-html-tag-classes))
-	
+
 ### Особые случаи
 - Применение CSS-хаков следует свести к минимуму.
 - Фильтры в IE использовать не следует из-за проблем с производительностью.
@@ -418,88 +417,92 @@ CSS-классы модификатора элемента:
 - Для областей с контентом, который редактируется пользователем (например: комментарии, посты и т.п.) необходимо использовать простые селекторы по тегам и по возможности не использовать CSS-классы. Желательно заранее знать, каким способом (WYSIWIG-редактор, Markdown, Wiki-разметка) будет генерироваться это содержимое.
 
 
+
 ## Пример структуры файлов проекта вёрстки
-	
+
 В примере используется jQuery-плагин [Fancybox](http://fancybox.net/) в качестве примера плагина с собственными CSS-файлами и изображениями, шаблоны собираются с помощью простого PHP-скрипта. Условное название проекта `project`.
-	
-	%%plain
-	/css
-		reset.css
-		layout.css
-		fonts.css
-		ie6.css
+
+```text
+/css
+	reset.css
+	layout.css
+	fonts.css
+	ie6.css
+	...
+	/plugins
+		/jquery.fancybox
+			jquery.fancybox-1.3.4.css 
+			jquery.fancybox.override.css 
+	...
+/graph	
+	...
+/flash
+	some-movie.swf
+	...
+/fonts
+	...
+/images
+	/header
 		...
-		/plugins
-			/jquery.fancybox
-				jquery.fancybox-1.3.4.css 
-				jquery.fancybox.override.css 
+	/footer
 		...
-	/graph	
-		...
-	/flash
-		some-movie.swf
-		...
-	/fonts
-		...
-	/images
-		/header
+	/plugins
+		/jquery.fancybox
+			...			
+		...						
+	/ui
+		/icons
 			...
-		/footer
+		/buttons
 			...
-		/plugins
-			/jquery.fancybox
-				...			
-			...						
-		/ui
-			/icons
-				...
-			/buttons
-				...
-		/temp
-			temp-informer100x100.gif
-			temp-banner768x60.png				
-	/js
-		/project
-			jquery.project_mySuperPlugin.js
-			jquery.project_myOtherPlugin.js
-			...
-		jquery-1.7.2.min.js 
+	/temp
+		temp-informer100x100.gif
+		temp-banner768x60.png				
+/js
+	/project
+		jquery.project_mySuperPlugin.js
+		jquery.project_myOtherPlugin.js
 		...
-		jquery.fancybox-1.3.4.js 
-		jquery.fancybox-1.3.4.pack.js 
+	jquery-1.7.2.min.js 
+	...
+	jquery.fancybox-1.3.4.js 
+	jquery.fancybox-1.3.4.pack.js 
+	...
+/templates
+	/layout
+		header.php
+		footer.php
+	/blocks
+		main_news.php
+		user_profile-links.php
 		...
-	/templates
-		/layout
-			header.php
-			footer.php
-		/blocks
-			main_news.php
-			user_profile-links.php
-			...
-		/pages
-			page_main.php
-			page_user.php
-			page_about.php
-			...
-	index.php
-	favicon.ico
-	robots.txt
+	/pages
+		page_main.php
+		page_user.php
+		page_about.php
+		...
+index.php
+favicon.ico
+robots.txt
+```
 
 В `robots.txt` удобно положить следующее, чтобы запретить индексирование поисковиками на случай, если вёрстка окажется на публично доступном сервере:
 	
-	%%plain
-	# No indexing for layout project
-	User-Agent: *
-	Disallow: /
-	
-	
+```text
+# No indexing for layout project
+User-Agent: *
+Disallow: /
+```
+
+
 ## Инструменты
+
 ### Банальные 
 
 - IDE\редактор по вкусу 
 - Firefox Web Developer Toolbar и Firebug (либо другие подобные плагины)
 - Набор целевых браузеров
-- Мелкая автоматизация, например с помощью [пакетных файлов](/view/102/otkrytie-url-v-neskolkix-brauzerax-iz-komandnoj-stroki)
+- Мелкая автоматизация, например с помощью [пакетных файлов](http://snippets.crisp-studio.com/view/102/otkrytie-url-v-neskolkix-brauzerax-iz-komandnoj-stroki)
 
 ### Продвинутые
 
@@ -507,7 +510,7 @@ CSS-классы модификатора элемента:
 - [Fiddler Web Debugger](http://www.fiddler2.com/fiddler2/)
 - Утилиты для комбинирования и сжатия, например [gzipit](http://code.google.com/p/gzipit/)
 - CSS-препроцессоры ([LESS](http://lesscss.org/), [SASS](http://sass-lang.com/) и т.п.)
-	
+
 ## Идеи для дальнейшей проработки
 - Сейчас БЭМ-классы используются и в JavaScript. Наверное, стоит использовать отдельные?
 - Есть ли какой-то способ использовать namespace'ы для тех jQuery-плагинов, для которых важно поддерживать chainable?
