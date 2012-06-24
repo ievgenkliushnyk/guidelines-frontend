@@ -189,73 +189,75 @@ CSS-классы модификатора элемента:
 Пример HTML-кода блока с элементами (панель с кнопками, объединёнными в группы):
 
 ```html
-	<!-- Блок -->
-	<div class="b-toolbar">
-		<!-- Элемент group блока b-toolbar --->
-		<ul class="b-toolbar__group"> 
-			<li>
-				<!-- Блок, который вложен в другой блок вместе со своими элементами -->
-				<a href="#" class="b-button"><span class="b-button__icon"></span>Открыть</a>
-			</li>
-			<li>
-				<a href="#" class="b-button"><span class="b-button__icon"></span>Сохранить</a>
-			</li>
-		</ul>
-		<ul class="b-toolbar__group">
-			<li>
-				<a href="#" class="b-button"><span class="b-button__icon"></span>Экспорт</a>
-			</li>
-			<li>
-				<a href="#" class="b-button"><span class="b-button__icon"></span>Импорт</a>
-			</li>
-		</ul>
-	</div><!-- /.b-toolbar -->
+<!-- Блок -->
+<div class="b-toolbar">
+	<!-- Элемент group блока b-toolbar --->
+	<ul class="b-toolbar__group"> 
+		<li>
+			<!-- Блок, который вложен в другой блок вместе со своими элементами -->
+			<a href="#" class="b-button"><span class="b-button__icon"></span>Открыть</a>
+		</li>
+		<li>
+			<a href="#" class="b-button"><span class="b-button__icon"></span>Сохранить</a>
+		</li>
+	</ul>
+	<ul class="b-toolbar__group">
+		<li>
+			<a href="#" class="b-button"><span class="b-button__icon"></span>Экспорт</a>
+		</li>
+		<li>
+			<a href="#" class="b-button"><span class="b-button__icon"></span>Импорт</a>
+		</li>
+	</ul>
+</div><!-- /.b-toolbar -->
 ```
 
 В CSS-коде отступы иллюстрируют вложенность элементов в блоки, например:	
-	
-	%%css
-	/*
-		.b-toolbar
-	*/
+
+```css
+/*
 	.b-toolbar
-		{
-		...
-		}
-		
-		.b-toolbar__group
-			{
-			...
-			}
+*/
+.b-toolbar
+	{
+	...
+	}
 	
-	/*
-		.b-button		
-	*/
-	.b-button
+	.b-toolbar__group
 		{
 		...
 		}
-		
-		.b-button__icon
-			{
-			...
-			}
+
+/*
+	.b-button		
+*/
+.b-button
+	{
+	...
+	}
+	
+	.b-button__icon
+		{
+		...
+		}
+```
 
 Использование [LESS](http://lesscss.org/) может сократить запись:
 
-	%%css
-	/*
-		.b-toolbar
-	*/
+```scss
+/*
 	.b-toolbar
+*/
+.b-toolbar
+	{
+	...
+	
+	&__group
 		{
 		...
-		
-		&__group
-			{
-			...
-			}
 		}
+	}
+```
 
 В случае сложных блоков можно использовать составные имена элементов, например, так (псевдокод):
 
