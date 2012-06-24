@@ -261,15 +261,16 @@ CSS-классы модификатора элемента:
 
 В случае сложных блоков можно использовать составные имена элементов, например, так (псевдокод):
 
-	%%plain
-	.b-news
-		.b-news__top
-			.b-news__top-title
-			.b-news__top-text
-		.b-news__other
-			.b-news__other-title
-			.b-news__other-text
-		
+```text
+.b-news
+	.b-news__top
+		.b-news__top-title
+		.b-news__top-text
+	.b-news__other
+		.b-news__other-title
+		.b-news__other-text
+```
+
 Блоки могут быть двух видов:
 
 - Блоки сетки страницы (называются так: `l-<имя блока>`)
@@ -281,64 +282,67 @@ CSS-классы модификатора элемента:
 
 Пример `l-`блоков:
 
-	%%html
-	<html>
-		<head>...</head>
-		<body>
-			<div class="l-page">
-				
-				<div class="l-header">
-					<!-- У `l-`блоков тоже могут быть элементы -->
-					<div class="l-header__logo">
-						...
-					</div><!-- /.l-header__logo --> 
-					<div class="l-header__menu">
-						...
-					</div><!-- /.l-header__menu -->
-				</div><!-- /.l-header -->
-				
-				<div class="l-main">
-					<div class="l-main__sidebar">
-						...
-					</div><!-- /.l-main__sidebar -->
-					<div class="l-main__content">
-						...
-					</div><!-- /.l-main__content -->
-				</div><!-- /.l-main  -->
-
-				<div class="l-footer">
+```html
+<html>
+	<head>...</head>
+	<body>
+		<div class="l-page">
+			
+			<div class="l-header">
+				<!-- У `l-`блоков тоже могут быть элементы -->
+				<div class="l-header__logo">
 					...
-				</div><!-- /.l-footer -->
-				
-			</div><!-- /.l-page -->
-		</body>
-	</html>
-		
+				</div><!-- /.l-header__logo --> 
+				<div class="l-header__menu">
+					...
+				</div><!-- /.l-header__menu -->
+			</div><!-- /.l-header -->
+			
+			<div class="l-main">
+				<div class="l-main__sidebar">
+					...
+				</div><!-- /.l-main__sidebar -->
+				<div class="l-main__content">
+					...
+				</div><!-- /.l-main__content -->
+			</div><!-- /.l-main  -->
+
+			<div class="l-footer">
+				...
+			</div><!-- /.l-footer -->
+			
+		</div><!-- /.l-page -->
+	</body>
+</html>
+```
 
 #### Модификаторы
 Для изменения внешнего вида блоков или элементов можно определить классы-модификаторы. 
-	
+
 Обычный блок: 
-	
-	%%html
-	<a href="#" class="b-button">
-		<span class="b-button__icon"></span>Войти на сайт
-	</a>
+
+```html
+<a href="#" class="b-button">
+	<span class="b-button__icon"></span>Войти на сайт
+</a>
+```
 
 Блок с модификатором:
-	
-	%%html
-	<a href="#" class="b-button m-button_icon_login">
-		<span class="b-button__icon"></span>Войти на сайт
-	</a>
+
+```html
+<a href="#" class="b-button m-button_icon_login">
+	<span class="b-button__icon"></span>Войти на сайт
+</a>
+```
 
 У блока может быть одновременно несколько модификаторов:
-	
-	%%html
-	<a href="#" class="b-button m-button_icon_login m-button_size_small">
-		<span class="b-button__icon"></span>Войти на сайт
-	</a>
-	
+
+```html
+<a href="#" class="b-button m-button_icon_login m-button_size_small">
+	<span class="b-button__icon"></span>Войти на сайт
+</a>
+```
+
 #### Преимущества подхода
 - Нет необходимости задумываться какие селекторы использовать (один ответ на все вопросы: &laquo;по id, по классу? по имени тега?&raquo;)
 - Если по мере развития сайта блок, который раньше был единственным на странице будет необходимо продублировать (был один блок меню, стало два) не придётся менять селекторы.
